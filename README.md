@@ -1,3 +1,6 @@
+> These updates are only for AWS re:Invent 2026. Do not merge this branch into the default branch.
+> Contact Ian Douglas or Tomas Josovsky with questions.
+
 # Agent Harness: Ziggy the travel agent
 
 Ziggy is a conversational travel agent built on the [Temporal Agent Harness](https://github.com/temporal-community/temporal-agent-harness). You ask for a trip, and the model writes a short Python script that runs in a [pydantic-monty](https://pypi.org/project/pydantic-monty/) sandbox. Each flight or hotel search, seat map, and booking in that script is a durable Temporal Activity, and each tool call waits for your approval. Flights come in economy, premium, and business fares. When Ziggy has options to offer, it shows them as cards in your browser and waits for you to pick one: that question is a harness callback tool, answered by the page rather than a worker, and the Workflow holds it durably until you choose. After booking, Ziggy offers seats from the flight's seat map, with each seat's perks and drawbacks. The trip board shows what's booked and what's left, and it updates as the bookings land.

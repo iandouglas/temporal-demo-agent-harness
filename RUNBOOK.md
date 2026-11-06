@@ -388,3 +388,11 @@ grep -oE 'blob/[0-9a-f]{40}/[^#)]+' RUNBOOK.md | sort -u | while IFS=/ read -r _
   git diff --quiet "$sha" HEAD -- "$file" || echo "changed since ${sha:0:7}: $file"
 done
 ```
+
+## re:Invent 2026 Booth Setup
+
+These updates are only for AWS re:Invent 2026. Do not merge this branch into the default branch. Contact Ian Douglas or Tomas Josovsky with questions.
+
+The laptop bundle uses this demo's source instructions with a separate UI port and a laptop-specific task queue. From the parent `new-demos/` folder, run `./bundle-setup.sh --only agent-harness` and `python3 bundle.py panel`, then start **Travel Agent / Temporal Agent Harness** in [Config](http://127.0.0.1:5199/config). UI: [localhost:5360](http://127.0.0.1:5360/).
+
+Use the shared `.env` from 1Password at the bundle root. Keep machine identity in `.env.local`. The panel keeps local Temporal running in Cloud mode and restarts this demo's owned processes when switching targets. See the [bundle runbook](../RUNBOOK.md) for Cloud prerequisites, offline limits and verification. Runtime is not verified by installation alone.
